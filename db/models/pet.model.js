@@ -35,9 +35,11 @@ class PetModel extends Model {
     static config (sequelize){
         return{
             sequelize,
-            modelName: 'PetMdodel',
+            modelName: 'Pet',
             tableName: PET_TABLE,
             timestamps: false
         }
     }
-}
+};
+
+module.exports = {PetModel, petSchema, PET_TABLE};
