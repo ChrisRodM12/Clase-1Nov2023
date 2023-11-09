@@ -4,19 +4,28 @@ const router = express.Router()
 const { v4: uuidv4 } = require('uuid');
 //**************Módulos internos**************
 const { readFile, writeFile } = require('../files');
+const sequelize = require('../libs/sequelize');
+
 const FILE_NAME = './db/pets.txt';
+
 
 //**************Rutas de la API**************
 //**************      API      **************
 
 //**************      WEB      **************
 // Listar Mascotas
-router.get('/', (req, res)=>{
-    let pets = readFile(FILE_NAME);
+router.get('/', async (req, res)=>{
+    //let pets = readFile(FILE_NAME);
+
     const{search} = req.query;
-    if(search){
-        pets = pets.filter(pet => pet.name.toLowerCase().includes(search.toLocaleLowerCase()));
-    }
+
+    //if(search){
+    //     pets = pets.filter(pet => pet.name.toLowerCase().includes(search.toLocaleLowerCase()));
+    //}
+
+    const [pets, metadata] = await sequelize.query('SELECT * FROM pets');
+    console.log('pets: ', pets);
+    console.log('metadata:', metadata);
     res.render('pets/index', { pets: pets, search: search});
 });
 
