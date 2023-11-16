@@ -1,7 +1,7 @@
 {
   "name": "5-modulos-built-in",
   "version": "1.0.0",
-  "description": "Crear una API con los módulos Built-in de Node",
+  "description": "Crear una API con los módulos Built-in de Node, plantilla base para proyecto",
   "main": "index.js",
   "scripts": {
     "debug": "npx nodemon --inspect index.js",
@@ -13,7 +13,7 @@
     "Built-in",
     "FS"
   ],
-  "author": "Carlos Castañeda",
+  "author": "Christian Rodriguez",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^3.0.1"

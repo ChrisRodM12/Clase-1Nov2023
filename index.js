@@ -1,13 +1,12 @@
 // Librerías externas
 require('dotenv').config()
 const express = require('express');
-const fs = require('fs');
-const { v4: uuidv4 } = require('uuid');
 
 // Módulos internos
 const { readFile, writeFile } = require('./src/files');
 const pets_api = require('./src/routes/pets_api');
 const petsp = require('./src/routes/pets');
+const authRouter = require('./src/routes/user.routes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -46,7 +45,7 @@ app.get('/read-file', (req, res) => {
 //Buscar las Rutas de API
 app.use('/api/pets',pets_api);
 app.use('/pets',petsp);
-
+app.use('/auth', authRouter);
 
 app.listen(PORT, () => {
     console.log(`${APP_NAME} is running on http://localhost:${PORT}`);

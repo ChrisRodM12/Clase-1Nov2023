@@ -7,6 +7,10 @@ const sequelize = new Sequelize ('pets','postgres','012345',{
     logging: true
 });
 
-setUpModels(sequelize)
+setUpModels(sequelize);
+
+//Sincronizar, comparar los modelos con las tablas de la base de datos
+
+sequelize.sync({force: true});
 
 module.exports = sequelize;
